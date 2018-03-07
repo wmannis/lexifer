@@ -1,0 +1,188 @@
+head	1.2;
+access;
+symbols;
+locks
+	annis:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2016.07.28.00.50.24;	author annis;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2016.07.23.23.09.41;	author annis;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@Summary: Just a crazy example.
+@
+text
+@# This isn't quite Hungarian, but approximates it for demonstration
+# purposes.  The cluster restrictions, in particular, are based on
+# Hungarian data: http://real-d.mtak.hu/233/1/Torkenczy_Miklos.pdf
+
+with: std-ipa-features std-assimilations coronal-metathesis
+
+letters: a á b d dz dʒ e é f g h i í j k l m n o ó p r s ʃ t ts tʃ u ú v x z ʒ '
+
+C = t n k tʃ s m r ʃ d h p ts v l d dʒ b ʒ x f dz j z p g
+
+##################################################
+# Some initial fricative + C clusters
+D = s ʃ v ʒ x f z
+E = t n k tʃ m r p ts l v f p
+
+# Cluster rules... notice the single quote mark, which I will use in
+# the 'words:' section below, to mark of syllable boundaries.  This
+# lets me more carefully craft where clusters are allowed and where
+# they are forbidden.
+
+%  p t k ts tʃ f v m n l r
+'f - + - -  -  - - - - + +
+'v - - - -  -  - - - - + -
+'s + + + +  -  + + + + + -
+'ʃ + + - -  +  - + + + + +
+'z - - - -  -  - - - - + +
+'ʒ - - - -  -  - - - - - -
+'x - - - -  -  - - - - - +
+
+##################################################
+# For initial complex clusters.
+W = s ʃ
+X = tr kr kl pr
+
+%  pr tr kr kl
+'s -  +  -  +
+'ʃ +  +  +  -
+
+V = a i e á u o é í ó ú
+S = s z ʃ
+R = n l r m
+
+##################################################
+# Vowel clusters
+% i e u o a í é ú ó á
+i - + + + + - + + + +
+e + - + + + - - - + +
+u + + - + + + - - + +
+o + + - - + - + - - +
+a + + + + - + - - + -
+í - - - - - - - - - -
+é - - - - - - - - - -
+ú - - - - - - - - - -
+ó - - - - - - - - - -
+á - - - - - - - - - -
+
+##################################################
+# Coda clusters
+T = t n k tʃ s m r ʃ d p ts v l d dʒ b ʒ x f dz j z p g
+
+# This rejects a mass of final clusters, and makes word generation
+# a bit slow.
+%  p' t' k' b' d' g' ts' tʃ' dʒ' f' s' ʃ' v' z' ʒ' m' n' l' r' j' x'
+p  + + - - - - -  -  -  + + + - - - - - - - - -
+t  - + + - - - -  -  -  - - - - - - - - - - - -
+k  - - + - - - -  +  -  - + + - - - - - - - - -
+b  - - - + - - -  -  -  - - - - - - - - - - - -
+d  - - - - + - -  -  -  - - - + + - - - - - - -
+g  - - - - + + -  -  -  - - - - - - - - - - - -
+ts - - + - - - +  -  -  - - - - - - - - - - - -
+tʃ - - + - - - -  +  -  - - - - - - - - - - - -
+dʒ - - - - + - -  -  +  - - - - - - - - - - - -
+f  - + - - - - -  -  -  + - - - - - - - - - - -
+s  - + + - - - -  -  -  - + - - - - - - - - - -
+ʃ  - + - - - - -  -  -  - - + - - - - - - - - -
+v  - - - - + - -  -  -  - - - - - - - - - - - -
+z  - - - - + + -  -  -  - - - - + - - - - - - -
+ʒ  - - - - + - -  -  -  - - - - - - - - - - - -
+m  + + - - + - -  -  -  + - - + + + + - - - - -
+n  - + + - + - +  +  +  - + + + - - - + + - - -
+l  + + + + + + +  +  -  + - + + - - + - + - - -
+r  + + + + + + +  +  -  + + + + + + + + + + + -
+j  + + + - + + +  +  -  + + + + + + + + + - - +
+x  - + - - - - -  -  -  - - - - - - - - - - - +
+
+
+##################################################
+# Words
+
+# First, some basic syllable types, with clustering rules as defined
+# above. 
+# Note that all syllables have a leading quote mark, which defines
+# syllable boundary, to make the cluster rules given above apply more
+# precisely.
+$A = 'CVV?C?
+$B = 'VV?C?
+$C = 'WXVV?C?
+
+$D = 'DEVC?
+
+$P = 'CVV?TT?
+$Q = 'VV?TT?
+
+# The actual words.
+words: $P $Q $P$P $D $Q$P $A$A $C$A $C$P $Q$D$P $Q$A $Q$A$P V?$A $BA
+
+# Reject a few vexations.
+reject: j(i|í) j' h' h$ ʃs sʃ zʒ ʒz
+
+# Hungarian-esque spelling
+filter: ts > c; s > sz; tʃ > cs; ʒ > zs; ʃ > s; ss > s; x > ch; ŋ > n
+
+# Remove syllable boundaries.
+filter: ' > !
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d7 1
+a7 1
+letters: a á b d dz dʒ e é f g h i j k l m n o ó p r s ʃ t ts tʃ u ú v x z ʒ
+d9 1
+a9 17
+C = t n k m l s r d h b j p g
+D = n l  t k r p
+V = a i e á u o é í ó ú
+S = s z ʃ
+R = n l r m
+
+W = s ʃ
+X = tr kr kl pr
+
+$A = CVC?
+$B = VC?
+
+
+words: $D
+
+reject: wu yi w$ y$ h$ ʔʔ (p|t|k|ʔ)h
+filter: nr > tr; mr > pr; ŋ > n
+d11 9
+d23 2
+a24 1
+'s + + + +  -  + + + + + +
+d27 7
+d39 6
+d48 2
+a49 2
+u + + + + + + - - + +
+o + + - + + - + - - +
+d51 61
+d113 2
+a114 2
+# Normal-ish Hungarian spelling
+filter: ts > c; s > sz; tʃ > cs; ʒ > zs; 
+@

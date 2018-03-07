@@ -1,0 +1,43 @@
+                        Platform Instructions
+
+Lexifer is Python program that runs in a terminal or command shell. It
+doesn't have a GUI.
+
+First, make sure you have Python: http://python.org/
+
+
+== Linux/Unix ==
+
+Just make sure you have Unicode enabled on your terminal. For xterms,
+You can CTRL-Mouse3 and select UTF-8 Fonts as well as Encoding to
+enable this.  The options '-u8 -wc' to xterm should do this for you.
+
+Fiddle with your editor's preferences to make it use Unicode.
+
+Use the command 'lexifer' or 'lexifer.py' as you see fit.
+
+
+== OSX (*cough*, excuse me, macOS) ==
+
+Open the Terminal. In preferences, go to Profiles. With the active
+profile, go to "Advanced" and make sure the Text encoding option (near
+the bottom) is set to "Unicode (UTF-8)".
+
+If you use X11, see the Linux/Unix notes above.
+
+Use the command 'lexifer' or 'lexifer.py' as you see fit.
+
+
+== Windows ==
+
+First, you need to make your command terminal use Unicode:
+
+ * Open cmd window
+ * right-click top left corner and click "Properties"
+ * click the "Font" tab
+ * click NSimSun font
+ * in cmd window, type "chcp 65001" to change the encoding to UTF-7/8
+
+(Thanks to /r/Fatal_Grace for this recipe).
+
+Use the command 'lexifer.py'.

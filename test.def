@@ -1,0 +1,15 @@
+with: std-ipa-features std-assimilations coronal-metathesis
+
+letters: ʔ a á b ch d e g h i k l m n o p r s t u w y
+
+C = t n k m ch l ʔ s r d h w b y p g
+D = n l ʔ t k r p
+V = a i e á u o
+
+$S = CVD?
+
+words:  V?$S$S V?$S V?$S$S$S
+
+reject: wu yi w$ y$ h$ ʔʔ (p|t|k|ʔ)h
+filter: nr > tr; mr > pr; ŋ > n
+

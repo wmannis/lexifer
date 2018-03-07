@@ -1,0 +1,30 @@
+# This produces something vaguely Australian looking.  I use
+# the normal IPA values for the retroflexes, but then filter
+# them out to a conventional orthography at the end.  It could
+# use some work.
+
+with: std-ipa-features std-assimilations coronal-metathesis
+
+#letters: a i j k l ly m n ny ng rn p r rr rd rr t rt u w y
+letters: a i c k l ʎ ɭ m n ɲ ŋ ɳ p ɹ ɽ r t ʈ u w j
+
+C = t n m l r w ɲ ʈ k ŋ ɭ ɹ j p ʎ ɳ 
+I = m l r w ɲ ɭ k ŋ ɹ ʈ j p ʎ ɳ 
+D = n ɹ l
+V = a i u aa uu ii
+W = a u i
+
+# No alveolars allowed word-initially. Word must end in a
+# short vowel or one of the D consonants.
+$S = IVD?
+$T = CVD?
+$F = CW
+
+words: $S$F $S$T $S $S$T$F $S$T$T $S$T$T$F
+
+reject: wu yi lrr
+filter: r > rr; ɹ > r; ɽ > rd
+filter: ^rr > r
+filter: j > y; ɳ > rn; ʈ > rt;  c > j; ʎ > ly; ɲ > ny; ɭ > rl
+filter: ŋ > ng; 
+
