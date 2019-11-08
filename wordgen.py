@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # $Revision: 1.4 $
 # 
@@ -45,7 +45,7 @@ class ArbSorter:
         # sort key.  (As in "ch" after all "c"s, for example.)
         split_order = sorted(self.graphs, key=len, reverse=True)
         split_order.append(".")
-        self.splitter = re.compile(u"(%s)" % "|".join(split_order), re.UNICODE)
+        self.splitter = re.compile("(%s)" % "|".join(split_order), re.UNICODE)
         # Next, collect ints for the ordering and the lookup
         # for putting words back together.
         self.ords = {}
@@ -63,8 +63,9 @@ class ArbSorter:
             arrayed_word = [self.ords[char] for char in w]
         except KeyError:
             msg = "Word with unknown letter: '%s'." % word
-            print msg.encode('utf-8')
-            print "A filter or assimilation might have caused this."
+            utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
+            print(msg, file=utf8stdout)
+            print("A filter or assimilation might have caused this.")
             sys.exit(1)
         return arrayed_word
 
@@ -82,10 +83,10 @@ class ArbSorter:
 
 # Weighted random selection.
 def select(dic):
-    total = sum(dic.itervalues())
+    total = sum(dic.values())
     pick = random.uniform(0, total-1)
     tmp = 0
-    for key, weight in dic.iteritems():
+    for key, weight in dic.items():
         tmp += weight
         if pick < tmp:
             return key
@@ -104,14 +105,14 @@ def natural_weights(phonemes):
     weighted = {}
     for i in range(n):
         weighted[p[i]] = jitter((math.log(n + 1) - math.log(i + 1)) / n * 100)
-    return ' '.join(['%s:%.2f' % (p, v) for (p, v) in weighted.items()])
+    return ' '.join(['%s:%.2f' % (p, v) for (p, v) in list(weighted.items())])
 
 def rule2dict(rule):
     items = rule.split()
     d = {}
     for item in items:
         if ':' not in item:
-            raise RuleError, '%s not a valid phoneme and weight' % item
+            raise RuleError('%s not a valid phoneme and weight' % item)
         (value, weight) = item.split(':')
         d[value] = float(weight)
     return d
@@ -165,14 +166,14 @@ class SoundSystem:
                     #                if (rule[i] != rule[i-1]):
                 # Make sure this is even a duplicate environment.
                 if (rule[i] != prevc):
-                    raise RuleError, "Misplaced '!' option: in non-duplicate environment: {}.".format(rule)
+                    raise RuleError("Misplaced '!' option: in non-duplicate environment: {}.".format(rule))
                 if rule[i] in self.phonemeset:
                     nph = self.phonemeset[rule[i]].select()
                     while nph == s[-1]:
                         nph = self.phonemeset[rule[i]].select()
                     s.append(nph)
                 else:
-                    raise RuleError, "Use of '!' here makes no sense: {}".format(rule)
+                    raise RuleError("Use of '!' here makes no sense: {}".format(rule))
             # Just a normal sound.
             elif rule[i] in self.phonemeset:
                 s.append(self.phonemeset[rule[i]].select())
@@ -237,7 +238,7 @@ class SoundSystem:
 
 def textify(phsys, sentences=11):
     """Generate a fake paragraph of text from a sound system."""
-    text = u""
+    text = ""
     for i in range(sentences):
         sent = random.randint(3, 11)
         if sent >= 7:
@@ -246,27 +247,27 @@ def textify(phsys, sentences=11):
             comma = -1
         text += phsys.generate(1, unsorted=True)[0].capitalize()
         for j in range(sent):
-            text += u" " + phsys.generate(1, unsorted=True)[0]
+            text += " " + phsys.generate(1, unsorted=True)[0]
             if j == comma:
-                text += u","
+                text += ","
         if random.randint(0, 70) <= 70:
-            text += u". "
+            text += ". "
         else:
-            text += u"? "
+            text += "? "
     text = textwrap.wrap(text, 70)
     return "\n".join(text)
 
 
 if __name__ == '__main__':
     m1 = SoundSystem()
-    m1.add_ph_unit('V', u'a i á u o')
-    m1.add_ph_unit('C', u't n k l h ch m s ɬ p š')
-    m1.add_ph_unit('F', u'n l s')
-    m1.add_sort_order(u'a á ch h i k l ɬ m n o p s š t u y')
-    m1.add_filter(ur'hy', ur'š')
-    m1.add_filter(ur'(lł|lł)', r'l')
-    m1.add_filter(ur's(t|k)', r'\1s')
-    m1.add_filter(ur'nn|ll|ss|sš', 'REJECT')
+    m1.add_ph_unit('V', 'a i á u o')
+    m1.add_ph_unit('C', 't n k l h ch m s ɬ p š')
+    m1.add_ph_unit('F', 'n l s')
+    m1.add_sort_order('a á ch h i k l ɬ m n o p s š t u y')
+    m1.add_filter(r'hy', r'š')
+    m1.add_filter(r'(lł|lł)', r'l')
+    m1.add_filter(r's(t|k)', r'\1s')
+    m1.add_filter(r'nn|ll|ss|sš', 'REJECT')
     m1.add_rule('V?Cy?VF?', 5)
     m1.add_rule('V?CVF?CV', 7)
 
@@ -274,9 +275,10 @@ if __name__ == '__main__':
 #print(m1.run_rule('CVC?'))
 #n = console.input_alert('wordgen', 'How many words?', '100')
     n = 50
-    print(' '.join(m1.generate(int(n))).encode('utf-8'))
-    print
-    print(textify(m1).encode('utf-8'))
+    utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
+    print(' '.join(m1.generate(int(n))), file=utf8stdout)
+    print()
+    print(textify(m1), file=utf8stdout)
 #print(m1.apply_filters('alła'))
 #print(m1.apply_filters('isti'))
 #print(m1.apply_filters('lassa'))
