@@ -35,7 +35,7 @@ class WeightedSelector(object):
         # build parallel arrays for indexing
         self.keys = []
         self.weights = []
-        for key, weight in dic.iteritems():
+        for key, weight in dic.items():
             self.keys.append(key)
             self.weights.append(weight)
         self.sum = sum(self.weights) - 1
