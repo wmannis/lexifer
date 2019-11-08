@@ -33,52 +33,52 @@ global phdb
 
 
 DATA = [# Bilabial, labio-dental
-  (u'p', u'p', 'voiceless', 'bilabial', 'stop'),
-  (u'b', u'b', 'voiced', 'bilabial', 'stop'),
-  (u'ɸ', u'ph', 'voiced', 'bilabial', 'fricative'),
-  (u'β', u'bh', 'voiced', 'bilabial', 'fricative'),
-  (u'f', u'f', 'voiceless', 'labiodental', 'fricative'),
-  (u'v', u'v', 'voiced', 'labiodental', 'fricative'),
-  (u'm', u'm', 'voiced', 'bilabial', 'nasal'),
-  (u'm', u'm', 'voiced', 'labiodental', 'nasal'),
+  ('p', 'p', 'voiceless', 'bilabial', 'stop'),
+  ('b', 'b', 'voiced', 'bilabial', 'stop'),
+  ('ɸ', 'ph', 'voiced', 'bilabial', 'fricative'),
+  ('β', 'bh', 'voiced', 'bilabial', 'fricative'),
+  ('f', 'f', 'voiceless', 'labiodental', 'fricative'),
+  ('v', 'v', 'voiced', 'labiodental', 'fricative'),
+  ('m', 'm', 'voiced', 'bilabial', 'nasal'),
+  ('m', 'm', 'voiced', 'labiodental', 'nasal'),
   # Alveolar
-  (u't', u't', 'voiceless', 'alveolar', 'stop'),
-  (u'd', u'd', 'voiced', 'alveolar', 'stop'),
-  (u's', u's', 'voiceless', 'alveolar', 'sibilant'),
-  (u'z', u'z', 'voiced', 'alveolar', 'sibilant'),
-  (u'θ', u'th', 'voiceless', 'alveolar', 'fricative'),
-  (u'ð', u'dh', 'voiced', 'alveolar', 'fricative'),
-  (u'ɬ', u'lh', 'voiceless', 'alveolar', 'lateral fricative'),
-  (u'ɮ', u'ldh', 'voiced', 'alveolar', 'lateral fricative'),
-  (u'tɬ', u'tl', 'voiceless', 'alveolar', 'lateral affricate'),
-  (u'dɮ', u'dl', 'voiced', 'alveolar', 'lateral affricate'),
-  (u'ts', u'ts', 'voiceless', 'alveolar', 'affricate'),
-  (u'dz', u'dz', 'voiced', 'alveolar', 'affricate'),
-  (u'ʃ', u'sh', 'voiceless', 'postalveolar', 'sibilant'),
-  (u'ʒ', u'zh', 'voiced', 'postalveolar', 'sibilant'),
-  (u'tʃ', u'ch', 'voiceless', 'postalveolar', 'affricate'),
-  (u'dʒ', u'j', 'voiced', 'postalveolar', 'affricate'),
-  (u'n', u'n', 'voiced', 'alveolar', 'nasal'),
+  ('t', 't', 'voiceless', 'alveolar', 'stop'),
+  ('d', 'd', 'voiced', 'alveolar', 'stop'),
+  ('s', 's', 'voiceless', 'alveolar', 'sibilant'),
+  ('z', 'z', 'voiced', 'alveolar', 'sibilant'),
+  ('θ', 'th', 'voiceless', 'alveolar', 'fricative'),
+  ('ð', 'dh', 'voiced', 'alveolar', 'fricative'),
+  ('ɬ', 'lh', 'voiceless', 'alveolar', 'lateral fricative'),
+  ('ɮ', 'ldh', 'voiced', 'alveolar', 'lateral fricative'),
+  ('tɬ', 'tl', 'voiceless', 'alveolar', 'lateral affricate'),
+  ('dɮ', 'dl', 'voiced', 'alveolar', 'lateral affricate'),
+  ('ts', 'ts', 'voiceless', 'alveolar', 'affricate'),
+  ('dz', 'dz', 'voiced', 'alveolar', 'affricate'),
+  ('ʃ', 'sh', 'voiceless', 'postalveolar', 'sibilant'),
+  ('ʒ', 'zh', 'voiced', 'postalveolar', 'sibilant'),
+  ('tʃ', 'ch', 'voiceless', 'postalveolar', 'affricate'),
+  ('dʒ', 'j', 'voiced', 'postalveolar', 'affricate'),
+  ('n', 'n', 'voiced', 'alveolar', 'nasal'),
   # Retroflex
-  (u'ʈ', u'rt', 'voiceless', 'retroflex', 'stop'),
-  (u'ɖ', u'rd', 'voiced', 'retroflex', 'stop'),
-  (u'ʂ', u'sr', 'voiceless', 'retroflex', 'sibilant'),
-  (u'ʐ', u'zr', 'voiced', 'retroflex', 'sibilant'),
-  (u'ʈʂ', u'rts', 'voiceless', 'retroflex', 'affricate'),
-  (u'ɖʐ', u'rdz', 'voiced', 'retroflex', 'affricate'),
-  (u'ɳ', u'rn', 'voiced', 'retroflex', 'nasal'),
+  ('ʈ', 'rt', 'voiceless', 'retroflex', 'stop'),
+  ('ɖ', 'rd', 'voiced', 'retroflex', 'stop'),
+  ('ʂ', 'sr', 'voiceless', 'retroflex', 'sibilant'),
+  ('ʐ', 'zr', 'voiced', 'retroflex', 'sibilant'),
+  ('ʈʂ', 'rts', 'voiceless', 'retroflex', 'affricate'),
+  ('ɖʐ', 'rdz', 'voiced', 'retroflex', 'affricate'),
+  ('ɳ', 'rn', 'voiced', 'retroflex', 'nasal'),
   # Velar
-  (u'k', u'k', 'voiceless', 'velar', 'stop'),
-  (u'g', u'k', 'voiced', 'velar', 'stop'),
-  (u'x', u'kh', 'voiceless', 'velar', 'fricative'),
-  (u'ɣ', u'gh', 'voiced', 'velar', 'fricative'),
-  (u'ŋ', u'ng', 'voiced', 'velar', 'nasal'),
+  ('k', 'k', 'voiceless', 'velar', 'stop'),
+  ('g', 'k', 'voiced', 'velar', 'stop'),
+  ('x', 'kh', 'voiceless', 'velar', 'fricative'),
+  ('ɣ', 'gh', 'voiced', 'velar', 'fricative'),
+  ('ŋ', 'ng', 'voiced', 'velar', 'nasal'),
   # Uvular
-  (u'q', u'q', 'voiceless', 'uvular', 'stop'),
-  (u'ɢ', u'gq', 'voiced', 'uvular', 'stop'),
-  (u'χ', u'qh', 'voiceless', 'uvular', 'fricative'),
-  (u'ʁ', u'gqh', 'voiced', 'uvular', 'fricative'),
-  (u'ɴ', u'nq', 'voiced', 'uvular', 'nasal')]
+  ('q', 'q', 'voiceless', 'uvular', 'stop'),
+  ('ɢ', 'gq', 'voiced', 'uvular', 'stop'),
+  ('χ', 'qh', 'voiceless', 'uvular', 'fricative'),
+  ('ʁ', 'gqh', 'voiced', 'uvular', 'fricative'),
+  ('ɴ', 'nq', 'voiced', 'uvular', 'nasal')]
 
 
 def initialize(notation="ipa"):
@@ -94,7 +94,7 @@ def initialize(notation="ipa"):
         for (ignore, ph, v, p, m) in DATA:
             c.execute("insert into phdb values (?,?,?,?)", (ph, v, p, m))
     else:
-        raise Error, "Unknown notation: %s" % notation
+        raise Error("Unknown notation: %s" % notation)
     phdb.commit()
 
 def nasal_assimilate(ph1, ph2):
@@ -160,8 +160,8 @@ def apply_coronal_metathesis(word):
 if __name__ == '__main__':
     initialize()
     #word1 = [u'a', u't', u'b', u'a', u'h', u'u', u'n', u'b', u'i']
-    word1 = [u'a', u'tʃ', u'b', u'a', u'h', u'u', u'n', u'b', u'i']
-    print word1
+    word1 = ['a', 'tʃ', 'b', 'a', 'h', 'u', 'n', 'b', 'i']
+    print(word1)
     word2 = apply_assimilations(word1)
-    print word2
-    print apply_coronal_metathesis(word2)
+    print(word2)
+    print(apply_coronal_metathesis(word2))
