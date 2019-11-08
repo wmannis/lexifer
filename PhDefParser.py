@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # $Revision: 1.7 $
 # 
@@ -58,24 +58,24 @@ class PhonologyDefinition(object):
                 if line == '': 
                     line = f.readline()
                     continue
-                if re.match(ur'with:', line):
+                if re.match(r'with:', line):
                     self.parse_option(line[5:].strip())
-                elif re.match(ur'random-rate:', line):
+                elif re.match(r'random-rate:', line):
                     self.parse_random_rate(line[12:].strip())
-                elif re.match(ur'filter:', line):
+                elif re.match(r'filter:', line):
                     self.parse_filter(line[7:].strip())
-                elif re.match(ur'reject:', line):
+                elif re.match(r'reject:', line):
                     self.parse_reject(line[7:].strip())
-                elif re.match(ur'words:', line):
+                elif re.match(r'words:', line):
                     self.parse_words(line[6:].strip())
-                elif re.match(ur'letters:', line):
+                elif re.match(r'letters:', line):
                     self.parse_letters(line[8:].strip())
                 elif line[0] == '%':
                     self.parse_clusterfield(line, f)
                 elif '=' in line:
                     self.parse_class(line)
                 else:
-                    raise ParseError, line
+                    raise ParseError(line)
                 line = f.readline()
         # A non-fatal bit of sanity checking and warning.
         if (self.soundsys.use_assim or self.soundsys.use_coronal_metathesis) and self.soundsys.sorter is None:
@@ -96,7 +96,7 @@ class PhonologyDefinition(object):
             elif option == 'coronal-metathesis':
                 self.soundsys.with_coronal_metathesis()
             else:
-                raise UnknownOption, option    
+                raise UnknownOption(option)    
 
     def add_filter(self, pre, post):
         pre = pre.strip()
@@ -131,7 +131,7 @@ class PhonologyDefinition(object):
             self.soundsys.add_rule(word, 10.0 / ((n + 1) ** .9))
 
     def expand_macros(self, word):
-        for (macro, value) in self.macros.items():
+        for (macro, value) in list(self.macros.items()):
             word = re.sub(macro, value, word)
         return word
 
@@ -139,7 +139,7 @@ class PhonologyDefinition(object):
         (sclass, values) = line.split("=")
         sclass = sclass.strip()
         values = values.strip()
-        if sclass[0] == u'$':
+        if sclass[0] == '$':
             self.macros["\\" + sclass] = values
         else:
             self.ph_classes += values.split()
@@ -169,9 +169,9 @@ class PhonologyDefinition(object):
                     else:
                         self.add_filter(c1 + c2list[i], result)
             elif len(row) > n:
-                raise ParseError, "Cluster field row too long: " + line
+                raise ParseError("Cluster field row too long: " + line)
             else:
-                raise ParseError, "Cluster field row too short: " + line
+                raise ParseError("Cluster field row too short: " + line)
             line = fh.readline()
 
     def parse_random_rate(self, line):
@@ -184,8 +184,8 @@ class PhonologyDefinition(object):
         phonemes = set(self.ph_classes)
         if not phonemes <= letters:
             diff = list(phonemes - letters)
-            msg = u"** A phoneme class contains '{}' missing from 'letters'.\n".format(" ".join(diff))
-            sys.stderr.write(msg.encode('utf-8'))
+            msg = "** A phoneme class contains '{}' missing from 'letters'.\n".format(" ".join(diff))
+            sys.stderr.write(msg)
             sys.stderr.write("** Strange word shapes are likely to result.\n")
 
     def generate(self, n=1, unsorted=False):
@@ -198,7 +198,10 @@ class PhonologyDefinition(object):
 if __name__ == '__main__':
     from wordgen import SoundSystem, textify
     
-    pd = PhonologyDefinition(SoundSystem(), "t.def")
-    #print(textify(pd.soundsys, 25).encode('utf-8'))
-    print(pd.paragraph(15).encode('utf-8'))
+    pd = PhonologyDefinition(SoundSystem(), "test.def")
+    #print(textify(pd.soundsys, 25))
+
+    # Nasty hack to make print() stop whining about ascii.
+    utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
+    print(pd.paragraph(15), file=utf8stdout)
     #print(pd.generate(50))
