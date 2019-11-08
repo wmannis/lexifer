@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # $Revision: 1.2 $
 # 
-# Copyright (c) 2015 William S. Annis
+# Copyright (c) 2015-2016 William S. Annis
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,11 @@ from sys import stderr
 from PhDefParser import PhonologyDefinition
 from wordgen import SoundSystem, textify
 
+# There is some whinging about regular expressions in 3 that I will
+# deal with at some other time.
+import warnings
+warnings.simplefilter("ignore")
+
 
 # Deal with arguments.
 opt = argparse.ArgumentParser()
@@ -46,6 +51,9 @@ args = opt.parse_args()
 # And off we go!  Parse the definition file.
 pd = PhonologyDefinition(SoundSystem(), args.file)
 
+# Hack to make print stop whining about encodings.
+utf8stdout = open(1, 'w', encoding='utf-8', closefd=False)
+
 # Generate some words...
 if args.number is None:
     # Default behavior - print out a paragraph of text.
@@ -53,16 +61,16 @@ if args.number is None:
         stderr.write("** 'Unsorted' option ignored in paragraph mode.\n\n")
     if args.one_per_line:
         stderr.write("** 'One per line' option ignored in paragraph mode.\n\n")
-    print textify(pd.soundsys, 25).encode('utf-8')
+    print(textify(pd.soundsys, 25), file=utf8stdout)
 else:
     # Just a wordlist.
     words = pd.generate(args.number, args.unsorted)
     if args.one_per_line:
         for w in words:
-            print(w.encode('utf-8'))
+            print(w, file=utf8stdout)
     else:
         words = textwrap.wrap(" ".join(words), 70)
-        print("\n".join(words).encode('utf-8'))
+        print("\n".join(words), file=utf8stdout)
     
 
 # EOF
