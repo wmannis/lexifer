@@ -29,7 +29,7 @@ import random
 # will speed things up a bit.  Takes a dict of keys
 # and weights.
 class WeightedSelector(object):
-    __slots__ = ['keys', 'weights', 'sum', 'n']
+#    __slots__ = ['keys', 'weights', 'sum', 'n']
     
     def __init__(self, dic):
         # build parallel arrays for indexing
@@ -38,7 +38,7 @@ class WeightedSelector(object):
         for key, weight in dic.items():
             self.keys.append(key)
             self.weights.append(weight)
-        self.sum = sum(self.weights) - 1
+        self.sum = sum(self.weights)
         self.n = len(self.keys)
 
     def select(self):
@@ -48,10 +48,12 @@ class WeightedSelector(object):
             tmp += self.weights[i]
             if pick < tmp:
                 return self.keys[i]
+        return 'woo!'
 
     def __iter__(self):
         return iter(self.keys)
 
 #m = WeightedSelector({'a': 7, 'b': 5, 'c': 1})
-#for i in range(10):
-#	print(m.select())
+#for i in range(5000):
+#    if m.select() == 'c': print("c")
+
