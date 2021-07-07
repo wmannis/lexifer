@@ -104,7 +104,7 @@ def natural_weights(phonemes):
     n = len(p)
     weighted = {}
     for i in range(n):
-        weighted[p[i]] = jitter((math.log(n + 1) - math.log(i + 1)) / n * 100)
+        weighted[p[i]] = jitter((math.log(n + 1) - math.log(i + 1)) / n)
     return ' '.join(['%s:%.2f' % (p, v) for (p, v) in list(weighted.items())])
 
 def rule2dict(rule):
