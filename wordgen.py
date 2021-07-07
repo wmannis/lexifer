@@ -250,7 +250,7 @@ def textify(phsys, sentences=11):
             text += " " + phsys.generate(1, unsorted=True)[0]
             if j == comma:
                 text += ","
-        if random.randint(0, 70) <= 70:
+        if random.randint(0, 100) <= 85:
             text += ". "
         else:
             text += "? "
