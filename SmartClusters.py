@@ -35,7 +35,7 @@ global phdb
 DATA = [# Bilabial, labio-dental
   ('p', 'p', 'voiceless', 'bilabial', 'stop'),
   ('b', 'b', 'voiced', 'bilabial', 'stop'),
-  ('ɸ', 'ph', 'voiced', 'bilabial', 'fricative'),
+  ('ɸ', 'ph', 'voiceless', 'bilabial', 'fricative'),
   ('β', 'bh', 'voiced', 'bilabial', 'fricative'),
   ('f', 'f', 'voiceless', 'labiodental', 'fricative'),
   ('v', 'v', 'voiced', 'labiodental', 'fricative'),
