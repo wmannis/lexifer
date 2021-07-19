@@ -69,7 +69,7 @@ DATA = [# Bilabial, labio-dental
   ('ɳ', 'rn', 'voiced', 'retroflex', 'nasal'),
   # Velar
   ('k', 'k', 'voiceless', 'velar', 'stop'),
-  ('g', 'k', 'voiced', 'velar', 'stop'),
+  ('g', 'g', 'voiced', 'velar', 'stop'),
   ('x', 'kh', 'voiceless', 'velar', 'fricative'),
   ('ɣ', 'gh', 'voiced', 'velar', 'fricative'),
   ('ŋ', 'ng', 'voiced', 'velar', 'nasal'),
