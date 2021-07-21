@@ -10,6 +10,9 @@ $S = CVD?
 
 words:  V?$S$S V?$S V?$S$S$S
 
+# haplology
+reject: (..+)\1+
+
 reject: wu yi w$ y$ h$ ʔʔ (p|t|k|ʔ)h
 filter: nr > tr; mr > pr; ŋ > n
 
