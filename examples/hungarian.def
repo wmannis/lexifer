@@ -108,7 +108,7 @@ $P = 'CVV?TT?
 $Q = 'VV?TT?
 
 # The actual words.
-words: $P $Q $P$P $D $Q$P $A$A $C$A $C$P $Q$D$P $Q$A $Q$A$P V?$A $BA
+words: $P $Q $P$P $D $Q$P $A$A $C$A $C$P $Q$D$P $Q$A $Q$A$P V?$A $B$A
 
 # Reject a few vexations.
 reject: j(i|í) j' h' h$ ʃs sʃ zʒ ʒz
