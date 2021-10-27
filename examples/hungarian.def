@@ -11,7 +11,7 @@ with: std-ipa-features std-assimilations coronal-metathesis
 
 letters: a á b d dz dʒ e é f g h i í j k l m n o ó p r s ʃ t ts tʃ u ú v z ʒ '
 
-C = t n k tʃ s m r ʃ d h p ts v l d dʒ b ʒ f dz j z p g
+C = t n k tʃ s m r ʃ d h p ts v l d b ʒ dʒ f j z p g dz
 
 ##################################################
 # Some initial fricative + C clusters
@@ -60,7 +60,7 @@ a + + + + - + - - + -
 
 ##################################################
 # Coda clusters
-T = t n k tʃ s m r ʃ d p ts v l d dʒ b ʒ f dz j z p g
+T = t n k tʃ s m r ʃ d p ts v l d dʒ b ʒ f j z p g dz
 
 # This rejects a mass of final clusters, and makes word generation
 # a bit slow.
@@ -105,7 +105,7 @@ $P = 'CVV?TT?
 $Q = 'VV?TT?
 
 # The actual words.
-words: $P $Q $P$P $D $Q$P $A$A $C$A $C$P $Q$D$P $Q$A $Q$A$P V?$A $B$A
+words: $P' $Q' $D $Q$P' $P$P' $A$A $C$A $C$P' $Q$D$P' $Q$A $Q$A$P' V?$A $B$A
 
 # Reject a few vexations.
 reject: j(i|í) j' h' h$ ʃs sʃ zʒ ʒz sz
