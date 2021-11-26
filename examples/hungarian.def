@@ -9,13 +9,13 @@
 
 with: std-ipa-features std-assimilations coronal-metathesis
 
-letters: a á b d dz dʒ e é f g h i í j k l m n o ó p r s ʃ t ts tʃ u ú v x z ʒ '
+letters: a á b c d dz dʒ e é f g h i í j k l m n o ó p r s ʃ t ts tʃ u ú v z ʒ '
 
-C = t n k tʃ s m r ʃ d h p ts v l d dʒ b ʒ x f dz j z p g
+C = t n k tʃ s m r ʃ d h p ts v l d b ʒ dʒ f j z p g dz
 
 ##################################################
 # Some initial fricative + C clusters
-D = s ʃ v ʒ x f z
+D = s ʃ v ʒ f z
 E = t n k tʃ m r p ts l v f p
 
 # Cluster rules... notice the single quote mark, which I will use in
@@ -30,7 +30,6 @@ E = t n k tʃ m r p ts l v f p
 'ʃ + + - -  +  - + + + + +
 'z - - - -  -  - - - - + +
 'ʒ - - - -  -  - - - - - -
-'x - - - -  -  - - - - - +
 
 ##################################################
 # For initial complex clusters.
@@ -61,33 +60,31 @@ a + + + + - + - - + -
 
 ##################################################
 # Coda clusters
-T = t n k tʃ s m r ʃ d p ts v l d dʒ b ʒ x f dz j z p g
+T = t n k tʃ s m r ʃ d p ts v l d dʒ b ʒ f j z p g dz
 
 # This rejects a mass of final clusters, and makes word generation
 # a bit slow.
-%  p' t' k' b' d' g' ts' tʃ' dʒ' f' s' ʃ' v' z' ʒ' m' n' l' r' j' x'
-p  + + - - - - -  -  -  + + + - - - - - - - - -
-t  - + + - - - -  -  -  - - - - - - - - - - - -
-k  - - + - - - -  +  -  - + + - - - - - - - - -
-b  - - - + - - -  -  -  - - - - - - - - - - - -
-d  - - - - + - -  -  -  - - - + + - - - - - - -
-g  - - - - + + -  -  -  - - - - - - - - - - - -
-ts - - + - - - +  -  -  - - - - - - - - - - - -
-tʃ - - + - - - -  +  -  - - - - - - - - - - - -
-dʒ - - - - + - -  -  +  - - - - - - - - - - - -
-f  - + - - - - -  -  -  + - - - - - - - - - - -
-s  - + + - - - -  -  -  - + - - - - - - - - - -
-ʃ  - + - - - - -  -  -  - - + - - - - - - - - -
-v  - - - - + - -  -  -  - - - - - - - - - - - -
-z  - - - - + + -  -  -  - - - - + - - - - - - -
-ʒ  - - - - + - -  -  -  - - - - - - - - - - - -
-m  + + - - + - -  -  -  + - - + + + + - - - - -
-n  - + + - + - +  +  +  - + + + - - - + + - - -
-l  + + + + + + +  +  -  + - + + - - + - + - - -
-r  + + + + + + +  +  -  + + + + + + + + + + + -
-j  + + + - + + +  +  -  + + + + + + + + + - - +
-x  - + - - - - -  -  -  - - - - - - - - - - - +
-
+%  p' t' k' b' d' g' ts' tʃ' dʒ' f' s' ʃ' v' z' ʒ' m' n' l' r' j'
+p  +  +  -  -  -  -  -   -   -   +  +  +  -  -  -  -  -  -  -  -
+t  -  +  +  -  -  -  -   -   -   -  -  -  -  -  -  -  -  -  -  -
+k  -  -  +  -  -  -  -   +   -   -  +  +  -  -  -  -  -  -  -  -
+b  -  -  -  +  -  -  -   -   -   -  -  -  -  -  -  -  -  -  -  -
+d  -  -  -  -  +  -  -   -   -   -  -  -  +  +  -  -  -  -  -  -
+g  -  -  -  -  +  +  -   -   -   -  -  -  -  -  -  -  -  -  -  -
+ts -  -  +  -  -  -  +   -   -   -  -  -  -  -  -  -  -  -  -  -
+tʃ -  -  +  -  -  -  -   +   -   -  -  -  -  -  -  -  -  -  -  -
+dʒ -  -  -  -  +  -  -   -   +   -  -  -  -  -  -  -  -  -  -  -
+f  -  +  -  -  -  -  -   -   -   +  -  -  -  -  -  -  -  -  -  -
+s  -  +  +  -  -  -  -   -   -   -  +  -  -  -  -  -  -  -  -  -
+ʃ  -  +  -  -  -  -  -   -   -   -  -  +  -  -  -  -  -  -  -  -
+v  -  -  -  -  +  -  -   -   -   -  -  -  -  -  -  -  -  -  -  -
+z  -  -  -  -  +  +  -   -   -   -  -  -  -  +  -  -  -  -  -  -
+ʒ  -  -  -  -  +  -  -   -   -   -  -  -  -  -  -  -  -  -  -  -
+m  +  +  -  -  +  -  -   -   -   +  -  -  +  +  +  +  -  -  -  -
+n  -  +  +  -  +  -  +   +   +   -  +  +  +  -  -  -  +  +  -  -
+l  +  +  +  +  +  +  +   +   -   +  -  +  +  -  -  +  -  +  -  -
+r  +  +  +  +  +  +  +   +   -   +  +  +  +  +  +  +  +  +  +  +
+j  +  +  +  -  +  +  +   +   -   +  +  +  +  +  +  +  +  +  -  -
 
 ##################################################
 # Words
@@ -108,13 +105,13 @@ $P = 'CVV?TT?
 $Q = 'VV?TT?
 
 # The actual words.
-words: $P $Q $P$P $D $Q$P $A$A $C$A $C$P $Q$D$P $Q$A $Q$A$P V?$A $BA
+words: $P' $Q' $D $Q$P' $P$P' $A$A $C$A $C$P' $Q$D$P' $Q$A $Q$A$P' V?$A $B$A
 
 # Reject a few vexations.
-reject: j(i|í) j' h' h$ ʃs sʃ zʒ ʒz
+reject: j(i|í) j' h' h$ ʃs sʃ zʒ ʒz sz
 
 # Hungarian-esque spelling
-filter: ts > c; s > sz; tʃ > cs; ʒ > zs; ʃ > s; ss > s; x > ch; ŋ > n
+filter: ts > c; s > sz; tʃ > cs; ʒ > zs; ʃ > s; ss > s; ŋ > n
 
 # Remove syllable boundaries.
 filter: ' > !
