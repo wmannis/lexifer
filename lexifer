@@ -26,6 +26,12 @@
 """William's Crazy Word Generator
 """
 
+# Switch to the source directory so imports work regardless of where the file
+# is called from.
+import os
+caller_dir = os.getcwd()
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 import argparse
 import textwrap
 from sys import stderr
@@ -37,6 +43,9 @@ from wordgen import SoundSystem, textify
 import warnings
 warnings.simplefilter("ignore")
 
+# Once imports are done, return to the callers original working directory so
+# relative paths can be used for the input file.
+os.chdir(caller_dir)
 
 # Deal with arguments.
 opt = argparse.ArgumentParser()
