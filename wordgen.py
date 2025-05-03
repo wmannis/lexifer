@@ -40,7 +40,7 @@ class RuleError(Exception): pass
 # di- or n-graphs.  It ain't efficient, but it works.
 class ArbSorter:
     def __init__(self, order):
-        self.graphs = re.split('\s*', order, flags=re.UNICODE)
+        self.graphs = re.split(r'\s*', order, flags=re.UNICODE)
         # Create a regex to split on each character or multicharacter
         # sort key.  (As in "ch" after all "c"s, for example.)
         split_order = sorted(self.graphs, key=len, reverse=True)
